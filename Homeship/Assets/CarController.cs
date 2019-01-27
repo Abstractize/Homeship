@@ -12,7 +12,7 @@ public class CarController : MonoBehaviour
     void Start()
     {
 
-        init = new Vector3((float)49.8, (float)3.54, (float)45.62);
+        init = transform.position;
     }
 
     // Update is called once per frame
@@ -25,7 +25,11 @@ public class CarController : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("wall_brick"))
         {
-            transform.position = init;
+            Destroy(this);
+        }
+        if(collision.gameObject.name == "Player 1")
+        {
+            collision.gameObject.GetComponent<Rigidbody>().MovePosition(new Vector3(5.979043f, 2.1f, -48.9f));
         }
     }
 }

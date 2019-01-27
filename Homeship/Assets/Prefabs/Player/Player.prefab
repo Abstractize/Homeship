@@ -723,6 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 8596673799598310946, guid: 4365ba50924c93e49a4f32769a4a8ae5, type: 3}
+  Player: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: ccf7133dffb6a324598248f017241a91, type: 2}
   - {fileID: 2100000, guid: aeac55b13f7d36545b4cb72cac599bd7, type: 2}
@@ -862,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234089916a5403445893959149ee2b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.2
   jumpVelocity: 6
   health: 3
   maxHealth: 3

@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public float jumpVelocity = 6;
     private bool jump = true;
     Rigidbody rb;
-    int level = 0;
+    static int level = 1;
 
     public delegate void OnHealthChangedDelegate();
     public OnHealthChangedDelegate onHealthChangedCallback;

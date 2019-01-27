@@ -27,7 +27,7 @@ public class CarController : MonoBehaviour
         {
             Destroy(this);
         }
-        if(collision.gameObject.name == "Player 1")
+        if(collision.gameObject.name == "Player")
         {
             collision.gameObject.GetComponent<Rigidbody>().MovePosition(new Vector3(5.979043f, 2.1f, -48.9f));
         }

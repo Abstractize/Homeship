@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    int Memories;
+    bool[] Memories = {false,false,false,false};
     public float speed = 1;
     public float jumpVelocity = 6;
     private bool jump = true;
     Rigidbody rb;
-
+    int level = 0;
 
     public delegate void OnHealthChangedDelegate();
     public OnHealthChangedDelegate onHealthChangedCallback;
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
     {
         Animation();
         AxisInput();
+        Win();
         Die();
     }
 
@@ -77,7 +79,19 @@ public class Player : MonoBehaviour
             anim.SetInteger("Movement", 0);
             jump = true;
         }
-     }
+        if (collision.gameObject.tag.Equals("Memory"))
+        {
+            Destroy(collision.gameObject);
+            for(int i = 0; i<Memories.Length; i++)
+            {
+                if (Memories[i] == false)
+                {
+                    Memories[i] = true;
+                    break;
+                }                    
+            }
+        }
+    }
 
     //Animations
     void Animation()
@@ -175,5 +189,10 @@ public class Player : MonoBehaviour
         if (Health == 0)
             Destroy(this);
         //Change Scene
+    }
+    void Win()
+    {
+        if (Memories[0] && Memories[1] && Memories[2] && Memories[3])
+            SceneManager.LoadScene(level++);       
     }
 }

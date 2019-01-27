@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
     {
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
         //Forward
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             anim.SetInteger("Movement", 1);
         //Back
         if (Input.GetKeyDown(KeyCode.S))
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         {
             anim.SetInteger("Movement", 3);
         }           
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S))
             anim.SetInteger("Movement", 0);
         //Throw
         if (Input.GetKey(KeyCode.E))
@@ -110,22 +110,22 @@ public class Player : MonoBehaviour
         //Forward
         if (Input.GetKey(KeyCode.W))
         {
-            rb.MovePosition(rb.position + Vector3.forward * speed);
+            rb.MovePosition(rb.position + transform.forward * speed);
         }
         //Back
         if (Input.GetKey(KeyCode.S))
         {
-            rb.MovePosition(rb.position + Vector3.back * speed);
+            rb.MovePosition(rb.position - transform.forward * speed);
         }
         //Left
         if (Input.GetKey(KeyCode.A))
         {
-            rb.MovePosition(rb.position + Vector3.left * speed);
+            rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0f, -30, 0f) * Time.deltaTime));
         }
         //Right
         if (Input.GetKey(KeyCode.D))
         {
-            rb.MovePosition(rb.position + Vector3.right * speed);
+            rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0f, 30, 0f) * Time.deltaTime));
         }
         //Jump
         if (Input.GetKey(KeyCode.Space) && jump)
